@@ -6,13 +6,51 @@
     <meta name="description" content="Laser input UI • A-Frame">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script> 
+    <script src="data/config.js"></script>
+    <script src="components/rooms.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene       
+        background="color: #212"
+        id="parent"
+        room
+        webxr="referenceSpaceType: local"
+        cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
+        info-message="htmlSrc: #messageText">
         <a-assets>
-          <img id="sky" src="/assets/images/HunterCampus.jpg">
+            <img id="sky" src="/assets/images/HunterCampus.jpg">
+            <img id="nav" src="/assets/images/arrow.png"/>
+            <a-mixin
+            id="frame"
+            geometry="primitive: plane; width: 2.5; height: 3"
+            material="color: white; shader: flat"
+            animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+            ></a-mixin>
+            <a-mixin
+            id="text"
+            geometry="primitive: plane; width: 3; height: 0.9"
+            material="color: #edd4b4; shader: flat"
+            position="0 -1.55 0"
+            ></a-mixin>
+            <a-mixin
+            id="poster"
+            geometry="primitive: plane; width: 0.544768; height: 0.786432"
+            material="color: white; shader: flat"
+            material="shader: flat"
+            position="0 0 0.005"
+            ></a-mixin>
+            <a-mixin
+            id="interactions"
+            geometry="primitive: plane;"
+            material="opacity: 0"
+            animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+            ></a-mixin>
         </a-assets>
         <a-sky src="#sky"></a-sky>
+        <a-entity src="#nav"></a-entity>
+
       </a-scene>
     </a-scene>
   </body>
