@@ -1,5 +1,6 @@
 
 /* global AFRAME */
+console.log("room.js loaded");
 AFRAME.registerComponent('room', {
   init: function () {
     var buttonEls = this.buttonEls = this.el.querySelectorAll('.nav-button');
@@ -41,13 +42,13 @@ AFRAME.registerComponent('room', {
       // var worldPos = new THREE.Vector3();
       // console.log(worldPos)
       // worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
-      // console.log("Time: " + this.data.seconds 
-      // + "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " + worldPos.z.toFixed(2) 
-      // + "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " + rotation.z.toFixed(2) + ")");        
+      // console.log("Time: " + this.data.seconds
+      // + "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " + worldPos.z.toFixed(2)
+      // + "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " + rotation.z.toFixed(2) + ")");
       if(document.getElementById("modal")){
         document.getElementById("modal").remove();
         return;
-      } 
+      }
       const { source, text } = interaction.display;
       // console.log("open interaction");
       const modal = document.createElement("a-entity");
@@ -83,17 +84,17 @@ AFRAME.registerComponent('room', {
       imgBackground.setAttribute('rotation', "0 0 0");
       let parent = document.getElementById("parent");
       parent.appendChild(imgBackground);
-    } 
+    }
     if(background.type.toLowerCase() === 'video'){
       const videoBackground = document.getElementById("videoBackground");
-      
+
       videoBackground.setAttribute('src', background.source);
-      
+
 
       const videosphere = document.createElement("a-videosphere");
       videosphere.setAttribute('rotation', background.rotation.join(" "));
       videosphere.setAttribute('src', "#videoBackground");
-      
+
       let parent = document.getElementById("parent");
       parent.appendChild(videosphere);
       videoBackground.play();
@@ -108,10 +109,12 @@ AFRAME.registerComponent('room', {
   },
 
   setInteractions: function(interactions){
-    // console.log(interactions);
+    console.log("test");
+    console.log(interactions);
     interactions.forEach(interaction => {
       // if(interaction.type.toLowerCase() === "nav"){
         const entity = document.createElement("a-entity");
+        console.log(interaction.location.join(" "));
         entity.setAttribute('position', interaction.location.join(" "));
         // if(interaction.id === 1789){
           // console.log("seeting rotation")
@@ -124,6 +127,7 @@ AFRAME.registerComponent('room', {
           </a-entity>
         </a-entity>
         `;
+        console.log(entity);
         let parent = document.getElementById("parent");
         parent.appendChild(entity);
         entity.addEventListener('click', ()=> {
@@ -139,10 +143,10 @@ AFRAME.registerComponent('room', {
     }
     if(document.querySelector("a-videosphere")){
       document.querySelector("a-videosphere").remove();
-    } 
+    }
     if(document.getElementById("modal")){
       document.getElementById("modal").remove();
-    } 
+    }
     document.querySelectorAll('.room-attribute').forEach(e => e.remove());
   },
 });

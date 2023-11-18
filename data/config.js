@@ -7,10 +7,10 @@ const house = {
                 "type": "picture",
                 "rotation": [0,-90,0]
             },
-            "adjacentRooms": ["HunterCampus2"],
+            "adjacentRooms": ["QCKeilyHall3"],
             "interactions": [
                 {
-                    "whereTo": "HunterCampus2",
+                    "whereTo": "QCKeilyHall3",
                     "type": "Nav",
                     "location": [-0.1, 1.4, -3], //[x, y, z],
                     "rotation": [0, 0, 90], //[x, y, z],
@@ -35,17 +35,19 @@ const house = {
                       "source": "/assets/images/TestImage.jpg",
                       "text": "testing testing 123",
                     }
-                }, 
+                },
             ],
         },
-        
-        "HunterCampus2": {
+
+        "QCKeilyHall3": {
             "background": {
-                "source": "assets/images/HunterCampus2.jpg",
+                "source": "assets/images/QCKeilyHall3.jpg",
                 "loop": false,
                 "type": "picture",
                 "rotation": [0,-90,0]
             },
         }
+
+
     }
 }
